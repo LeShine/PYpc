@@ -1,0 +1,123 @@
+# 第三方库：BeautifulSoup requests
+from bs4 import BeautifulSoup
+import requests
+import MySQLdb
+import time
+import re
+
+# 本地数据库配置信息
+DATABASE = {
+    'host': '127.0.0.1',
+    'database': 'ljrental',
+    'user': 'root',
+    'password': 'root',
+    'charset': 'utf8mb4',
+}
+db = MySQLdb.connect(**DATABASE)
+
+
+# 获取html
+def get_page(page_url):
+    responce = requests.get(page_url)
+    soup = BeautifulSoup(responce.text, 'html5lib')
+    return soup
+
+
+# 获取所需内容links
+def get_links(url):
+    soup = get_page(url)
+    links_div = soup.find_all('div', class_='info-panel')
+    links = [div.a.get('href') for div in links_div]
+    return links
+
+
+# 获取对应link详细信息
+def get_house_info(house_url):
+    # house_url = 'https://wh.lianjia.com/zufang/104100916350.html'
+    soup = get_page(house_url)
+    price = soup.find('span', class_='total').text
+    unit = soup.find('span', class_='unit').text.strip()
+    house_info = soup.find_all('p')
+    area = house_info[0].text[3:]
+    layout = house_info[1].text[5:]
+    floor = house_info[2].text[3:]
+    orientation = house_info[3].text[5:]
+    subway = house_info[4].text[3:]
+    residential = house_info[5].text[3:]
+    postion = house_info[6].text[3:]
+    put_time = house_info[7].text[3:]
+    agent = soup.find('a', class_='name LOGCLICK')
+    agent_name = agent.text
+    agent_id = agent.get('data-el')
+    # ph = soup.find('div', class_='phone')
+    # print(ph)
+    phones = soup.find('div', class_='phone').text.strip()
+    phone = re.sub('[\r\n\t]', '', phones)
+    info = {
+        '价格': price,
+        '单位': unit,
+        '面积': area,
+        '户型': layout,
+        '楼层': floor,
+        '朝向': orientation,
+        '地铁': subway,
+        '小区': residential,
+        '位置': postion,
+        '发布时间': put_time,
+        '经纪人': agent_name,
+        '经纪人id': agent_id,
+        '联系电话': phone,
+    }
+    return info
+
+
+# 获取数据库实例
+def get_db(database):
+    return MySQLdb.connect(**database)
+
+
+# 操作数据库
+def insert(dbi, house):
+    values = "'{}'," * 12 + "'{}'"
+    sql_values = values.format(
+        house['价格'],
+        house['单位'],
+        house['面积'],
+        house['户型'],
+        house['楼层'],
+        house['朝向'],
+        house['地铁'],
+        house['小区'],
+        house['位置'],
+        house['发布时间'],
+        house['经纪人'],
+        house['经纪人id'],
+        house['联系电话'], )
+    sql = """INSERT INTO ljrental.houseinfo(price,unit,area,layout,floor,orientation,subway,residential,
+          postion,put_time,agent_name,agent_id,phone) VALUES({})""".format(sql_values)
+    cursor = dbi.cursor()
+    cursor.execute(sql)
+    dbi.commit()
+
+
+# 存储爬取信息
+def put_data(link_url):
+    links = get_links(link_url)
+    # 获取单个url详细信息
+    for link in links:
+        time.sleep(2)
+        print('成功获取一个租房信息！')
+        house_info = get_house_info(link)
+        # 写入数据库
+        # db = get_db(DATABASE)
+        insert(db, house_info)
+
+
+pages = 1
+while pages < 10:
+    # 获取列表页url列表
+    Link_url = 'https://wh.lianjia.com/zufang/pg{}'.format(pages)
+    print(Link_url, pages)
+    pages += 1
+    put_data(Link_url)
+
