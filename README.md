@@ -28,6 +28,7 @@ creating a new branch
 
 保存退出：wq
 
+查看分支合并图：git log -graph
 
 creating a new branch is quick and simple！
 
