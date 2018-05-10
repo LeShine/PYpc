@@ -18,3 +18,5 @@ git vim 命令
 保存不退出：write
 保存退出：wq
 
+creating a new branch is quick & simple 
+
