@@ -34,6 +34,12 @@ creating a new branch
 恢复指定stash：git stash apply stash@{0}
 
 
+拉取远程仓库：git pull
+
+本地分支与远程分支建立链接：git branch --set-upstream-to branchname origin/branchname
+
+
+
 --------------------------------------------
 
 
@@ -52,4 +58,10 @@ creating a new branch
 粘贴：可视+p
 
 creating a new branch is quick and simple！
+
+git merge test about fast forward
+
+
+
+
 
