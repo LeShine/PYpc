@@ -37,6 +37,9 @@ creating a new branch
 
 本地分支与远程分支建立链接：git branch --set-upstream-to branchname origin/branchname
 
+本地创建和远程对应的分支：git checkout -b branch-name origin/branch-name
+
+查看远程库信息：git remote -v
 
 
 --------------------------------------------
