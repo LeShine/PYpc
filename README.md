@@ -19,6 +19,12 @@ creating a new branch
 
 查看分支合并图：git log -graph
 
+拉取远程仓库：git pull
+
+本地分支与远程分支建立链接：git branch --set-upstream-to branchname origin/branchname
+
+
+
 --------------------------------------------
 
 
