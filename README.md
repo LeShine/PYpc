@@ -17,6 +17,8 @@ creating a new branch
 
 推送本地仓库到远程：git push origin master
 
+查看分支合并图：git log -graph
+
 --------------------------------------------
 
 
@@ -28,7 +30,11 @@ creating a new branch
 
 保存退出：wq
 
-查看分支合并图：git log -graph
+进入可视：右键
+
+复制：选中+Y
+
+粘贴：可视+p
 
 creating a new branch is quick and simple！
 
