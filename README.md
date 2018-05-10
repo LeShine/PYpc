@@ -44,6 +44,14 @@ creating a new branch
 
 --------------------------------------------
 
+git vim order
+
+
+打开目标文件：vi file-name
+
+解锁vim编辑器进入编辑模式：i
+
+退回锁定模式：esc
 
 进入命令模式：:
 
