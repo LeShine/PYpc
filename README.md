@@ -21,6 +21,18 @@ creating a new branch
 
 退出log模式：q
 
+暂存工作区：git stash
+
+恢复工作区保留stash：git stash apply
+
+删除stash：git stash drop
+
+回复工作区删除stash：git stash pop
+
+查看stash：git stash list
+
+恢复指定stash：git stash apply stash@{0}
+
 
 --------------------------------------------
 
