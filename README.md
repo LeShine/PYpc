@@ -17,7 +17,10 @@ creating a new branch
 
 推送本地仓库到远程：git push origin master
 
-查看分支合并图：git log -graph
+查看分支合并图：git log --graph --pretty=oneline --abbrev-commit
+
+退出log模式：q
+
 
 --------------------------------------------
 
