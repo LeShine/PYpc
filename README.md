@@ -17,6 +17,8 @@ creating a new branch
 
 合并分支到当前分支：git merge branchname
 
+合并分支并保留分支信息：git merge --no-ff -m "illustration"
+
 删除分支：git branch -d branchname
 
 推送本地git仓库到远程仓库：git push origin master
