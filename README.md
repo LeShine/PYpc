@@ -72,8 +72,6 @@ creating a new branch
 
 
 
-
-
 --------------------------------------------
 
 git vim order
@@ -103,6 +101,12 @@ creating a new branch is quick and simple！
 
 git merge test about fast forward
 
+
+
+---------------------------------------------
+GitHub Order
+
+clone 项目到本地： git clone git_address
 
 
 
