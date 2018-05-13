@@ -67,7 +67,7 @@ creating a new branch
 
 删除远程标签：git push origin :refs/tags/tagname
 
-
+删除远程分支：git push origin :branch_name
 
 
 
