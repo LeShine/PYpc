@@ -69,6 +69,20 @@ creating a new branch
 
 删除远程分支：git push origin :branch_name
 
+clone 项目到本地： git clone git_address
+
+命令别名配置： git config --global alias.reNAME NAME
+
+丢弃工作区的修改：git checkout -- filename
+
+丢弃暂存区的修改：git reset HEAD filename
+
+查看随后一次提交：git log -1
+
+
+
+
+
 
 
 
