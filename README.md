@@ -59,6 +59,14 @@ creating a new branch
 
 查看具体标签信息：git show tagname
 
+推送本地标签到远程：git push origin tagname
+
+推送本地所有标签到：git push origin --tags
+
+删除本地标签：git tag -d tagname
+
+删除远程标签：git push origin :refs/tags/tagname
+
 
 
 
