@@ -111,6 +111,10 @@ git vim order
 
 粘贴：可视+p
 
+创建文件夹：mkdir + folder
+
+创建文件：touch + file_name
+
 creating a new branch is quick and simple！
 
 git merge test about fast forward
