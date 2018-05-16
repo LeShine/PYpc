@@ -81,7 +81,17 @@ clone 项目到本地： git clone git_address
 
 
 
+git生成ssh密钥
 
+一、在git bash下执行  cd ~/.ssh
+	如果能进入.ssh目录下，证明之前生成过.ssh密钥，可直接使用
+	如果不能进入，则检测配置：分别执行 git config user.name 和 git config user.email
+	如果之前没有配置过（运行后没有显示name和Email），则运行git config -global.'name' 和 git config -global.email 'email'
+
+二、生成密钥
+	运行ssh-keygen -t rsa -C '配置的邮箱地址'
+	连续三个回车
+三、打开生成的id_rsa.pub(公钥)，复制全部内容到github添加sshkey
 
 
 
